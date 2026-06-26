@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Gatewise — Gate, Visitor &amp; Community Management for Gated Communities</title>
-<meta name="description" content="Gatewise is the gate, visitor and community platform for gated communities and HOAs: QR visitor gate access, remote gate opening, maintenance requests, announcements, incident/SOS alerts, dues visibility and a full audit trail." />
+<meta name="description" content="Gatewise is the gate, visitor and community platform for gated communities and HOAs: QR visitor gate access, maintenance requests, announcements, incident/SOS alerts, dues visibility and a full audit trail." />
 <meta name="theme-color" content="#0B3D2E" />
 <!-- Open Graph -->
 <meta property="og:title" content="Gatewise — Run your gated community on one platform" />
@@ -184,6 +184,9 @@
   .card.featured p{color:rgba(225,240,231,.82)}
   .card .tag{position:absolute;top:18px;right:18px;font-size:.66rem;font-weight:800;letter-spacing:.08em;
     text-transform:uppercase;background:var(--gold-400);color:var(--green-900);padding:4px 9px;border-radius:999px}
+  .card .tag.soon{background:var(--slate-300);color:var(--green-900)}
+  .card.soon-card{opacity:.92}
+  .card.soon-card .ic{color:var(--slate-500);background:linear-gradient(135deg,var(--surface-2),#fff)}
   .card h3{font-size:1.18rem;font-weight:700;margin-bottom:9px}
   .card p{color:var(--slate-500);font-size:.96rem}
   @media(max-width:920px){.feat-grid{grid-template-columns:1fr 1fr}}
@@ -447,12 +450,12 @@
         <h3>Visitor allowlist &amp; passes</h3>
         <p>Keep recurring visitors, helpers and contractors on a pre-approved allowlist, and manage active passes — so regular faces get through without a fresh invite each time.</p>
       </div>
-      <!-- remote gate opening -->
-      <div class="card fade">
-        <span class="tag">New</span>
+      <!-- remote gate opening (coming soon) -->
+      <div class="card fade soon-card">
+        <span class="tag soon">Coming soon</span>
         <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-5a3 3 0 0 1 6 0v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
         <h3>Remote gate opening</h3>
-        <p>Guards open the gate straight from the security app — a tap pulses a Wi-Fi or GSM relay on your existing gate motor. No new gate to install, and every open is logged: who, which gate, when and why.</p>
+        <p>Coming soon: guards will open the gate straight from the security app — a tap pulses a Wi-Fi or GSM relay on your existing gate motor. No new gate to install, and every open logged: who, which gate, when and why.</p>
       </div>
       <!-- dues visibility -->
       <div class="card fade">
@@ -516,7 +519,7 @@
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Log walk-ins, entries &amp; exits in seconds</li>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Check the visitor allowlist on the spot</li>
           <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Receive SOS &amp; incident alerts instantly</li>
-          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> Open the gate from the app — every open logged</li>
+          <li><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg> A focused app made for the gate post</li>
         </ul>
       </div>
       <!-- management -->
@@ -574,7 +577,7 @@
         </thead>
         <tbody>
           <tr><td>QR visitor &amp; gate access</td><td class="us col-us"><span class="yes">✓</span></td><td class="other">✓</td><td class="other"><span class="no">—</span></td></tr>
-          <tr><td>Remote gate opening from the app</td><td class="us col-us"><span class="yes">✓</span></td><td class="other"><span class="no">—</span></td><td class="other"><span class="no">—</span></td></tr>
+          <tr><td>Remote gate opening from the app</td><td class="us col-us"><span class="yes" style="font-size:.8rem;letter-spacing:.04em">SOON</span></td><td class="other"><span class="no">—</span></td><td class="other"><span class="no">—</span></td></tr>
           <tr><td>Maintenance / issue tracking</td><td class="us col-us"><span class="yes">✓</span></td><td class="other"><span class="no">—</span></td><td class="other">Partial</td></tr>
           <tr><td>SOS / incident alerts</td><td class="us col-us"><span class="yes">✓</span></td><td class="other">Partial</td><td class="other"><span class="no">—</span></td></tr>
           <tr><td>Announcements &amp; notices</td><td class="us col-us"><span class="yes">✓</span></td><td class="other"><span class="no">—</span></td><td class="other">Manual</td></tr>
