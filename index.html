@@ -764,5 +764,53 @@
     els.forEach(function(e){ io.observe(e); });
   })();
 </script>
+
+<script>
+  // White-label: pull the community's name/colors/logo from the API and apply
+  // them over the baked-in defaults. Fully defensive — any failure leaves the
+  // page exactly as shipped. (CORS for this origin is allowed by the API.)
+  (function(){
+    var API = 'https://3.134.90.19.sslip.io';
+    function clamp(x){ return Math.max(0, Math.min(255, Math.round(x))); }
+    function shift(hex, amt){ // amt<0 darken, >0 lighten
+      var m=(hex||'').replace('#',''); if(m.length===3){m=m.split('').map(function(c){return c+c}).join('');}
+      if(m.length!==6) return hex;
+      var n=parseInt(m,16), r=(n>>16)&255, g=(n>>8)&255, b=n&255, t=amt<0?0:255, a=Math.abs(amt);
+      return '#'+[r,g,b].map(function(v){return clamp(v+(t-v)*a).toString(16).padStart(2,'0')}).join('');
+    }
+    function setVar(k,v){ document.documentElement.style.setProperty(k,v); }
+    fetch(API + '/api/v1/branding').then(function(r){ return r.ok ? r.json() : null; }).then(function(b){
+      if(!b) return;
+      if(b.primary_color){
+        setVar('--green-800', b.primary_color);
+        setVar('--green-900', shift(b.primary_color, -0.30));
+        setVar('--green-700', shift(b.primary_color,  0.12));
+        setVar('--green-600', shift(b.primary_color,  0.26));
+        setVar('--green-300', shift(b.primary_color,  0.55));
+        setVar('--green-100', shift(b.primary_color,  0.85));
+      }
+      if(b.accent_color){
+        setVar('--gold-500', b.accent_color);
+        setVar('--gold-400', shift(b.accent_color, 0.18));
+        setVar('--gold-100', shift(b.accent_color, 0.80));
+      }
+      if(b.community_name){
+        // Replace the "Gatewise" wordmark text in the nav + footer brand.
+        document.querySelectorAll('.brand').forEach(function(el){
+          el.childNodes.forEach(function(node){
+            if(node.nodeType===3 && node.nodeValue.trim()){ node.nodeValue=' '+b.community_name; }
+          });
+        });
+        document.title = document.title.replace(/^Gatewise/, b.community_name);
+      }
+      if(b.logo_url){
+        var url = /^https?:/.test(b.logo_url) ? b.logo_url : (API + b.logo_url);
+        document.querySelectorAll('.brand .mark').forEach(function(mark){
+          mark.innerHTML = '<img src="'+url+'" alt="logo" style="width:100%;height:100%;object-fit:contain;border-radius:7px">';
+        });
+      }
+    }).catch(function(){ /* keep defaults */ });
+  })();
+</script>
 </body>
 </html>
